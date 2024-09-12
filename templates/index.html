@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <h1>Tic-Tac-Toe</h1>
+
+    <div class="message">{{ message }}</div>
+
+    <div class="board">
+      {% for i in range(9) %}
+      <div class="cell">
+        {% if board[i] == ' ' %}
+        <!-- Display a button for an empty cell to make it clickable -->
+        <form method="post" action="{{ url_for('play', move=i) }}">
+          <button type="submit">{{ board[i] }}</button>
+        </form>
+        {% else %}
+        <!-- Display the already played move (X or O) -->
+        {{ board[i] }} {% endif %}
+      </div>
+      {% if i % 3 == 2 %}
+      <br />
+      {% endif %} {% endfor %}
+    </div>
+
+    <div class="scoreboard">
+      <p>Player (X): {{ player_score }}</p>
+      <p>AI (O): {{ ai_score }}</p>
+      <p>Draws: {{ draw_count }}</p>
+    </div>
+
+    <a href="{{ url_for('reset') }}">Reset Game</a>
+  </body>
+</html>

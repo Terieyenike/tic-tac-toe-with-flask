@@ -1,0 +1,77 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.board {
+  display: inline-block;
+  padding: 20px; /* Added padding for the playable area */
+  border: 2px solid black; /* Optional: add a border around the game area */
+  background-color: #f9f9f9; /* Light background to distinguish the board */
+  margin-top: 20px; /* Space between the board and other elements */
+}
+
+.cell {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border: 1px solid black;
+  font-size: 2em;
+  margin: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Style for playable (empty) cells */
+.cell form button {
+  width: 100%;
+  height: 100%;
+  font-size: 2em;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px; /* Padding inside playable cells */
+}
+
+/* Highlight empty cells on hover */
+.cell form button:hover {
+  background-color: lightgreen;
+}
+
+/* Non-clickable cells (already played) */
+.cell {
+  cursor: default;
+}
+
+/* Style for already occupied cells */
+.cell:empty {
+  background-color: #f2f2f2;
+}
+
+/* Disable pointer for already played cells (O or X) */
+.cell:not(:empty) {
+  background-color: #dcdcdc;
+  color: black;
+  cursor: not-allowed;
+}
+
+.message {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.scoreboard {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+a {
+  display: block;
+  margin-top: 15px;
+  font-size: 1.2em;
+}
