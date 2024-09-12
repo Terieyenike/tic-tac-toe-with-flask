@@ -1,16 +1,21 @@
 body {
   text-align: center;
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .board {
   display: inline-block;
-  padding: 20px; /* Added padding for the playable area */
-  border: 2px solid black; /* Optional: add a border around the game area */
-  background-color: #f9f9f9; /* Light background to distinguish the board */
-  margin-top: 20px; /* Space between the board and other elements */
+  padding: 20px;
+  border: 2px solid black;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+  max-width: 90%; /* Ensures the board fits within the screen on smaller devices */
+  box-sizing: border-box; /* Ensures padding and borders are included in element width */
 }
 
+/* Default cell size (for larger screens) */
 .cell {
   display: inline-block;
   width: 100px;
@@ -20,10 +25,9 @@ body {
   font-size: 2em;
   margin: 5px;
   text-align: center;
-  transition: background-color 0.3s ease; /* Smooth transition */
+  transition: background-color 0.3s ease;
 }
 
-/* Style for playable (empty) cells */
 .cell form button {
   width: 100%;
   height: 100%;
@@ -31,7 +35,7 @@ body {
   background-color: white;
   border: none;
   cursor: pointer;
-  padding: 10px; /* Padding inside playable cells */
+  padding: 10px;
 }
 
 /* Highlight empty cells on hover */
@@ -44,12 +48,7 @@ body {
   cursor: default;
 }
 
-/* Style for already occupied cells */
-.cell:empty {
-  background-color: #f2f2f2;
-}
-
-/* Disable pointer for already played cells (O or X) */
+/* Disable pointer for already played cells */
 .cell:not(:empty) {
   background-color: #dcdcdc;
   color: black;
@@ -66,12 +65,73 @@ body {
   font-size: 1.2em;
 }
 
-h1 {
-  margin-bottom: 10px;
-}
-
+/* Link for resetting the game */
 a {
   display: block;
   margin-top: 15px;
   font-size: 1.2em;
+}
+
+/* Media queries for responsiveness */
+
+/* For screens smaller than 768px (tablets and smaller devices) */
+@media (max-width: 768px) {
+  .board {
+    padding: 15px;
+  }
+
+  .cell {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 1.5em;
+    margin: 3px;
+  }
+
+  .cell form button {
+    padding: 5px;
+  }
+
+  .message {
+    font-size: 1.2em;
+  }
+
+  .scoreboard {
+    font-size: 1em;
+  }
+
+  a {
+    font-size: 1em;
+  }
+}
+
+/* For screens smaller than 480px (mobile devices) */
+@media (max-width: 480px) {
+  .board {
+    padding: 10px;
+  }
+
+  .cell {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.2em;
+    margin: 2px;
+  }
+
+  .cell form button {
+    padding: 3px;
+  }
+
+  .message {
+    font-size: 1em;
+  }
+
+  .scoreboard {
+    font-size: 0.9em;
+  }
+
+  a {
+    font-size: 0.9em;
+  }
 }
